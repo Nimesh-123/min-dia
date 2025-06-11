@@ -31,8 +31,7 @@ class _PodcastListenerWidgetState extends State<PodcastListenerWidget>
     _audioUrl = AudioSource.uri(
       Uri.parse('http://daq7nasbr6dck.cloudfront.net/7habits/1.mp3'),
       tag: MediaItem(
-        // Specify required metadata
-        id: '1', // Unique ID for this media item
+        id: '1',
         album: '7 Habits of Highly Effective People',
         title: 'Chapter 1',
         artist: 'Stephen R. Covey',
@@ -43,7 +42,6 @@ class _PodcastListenerWidgetState extends State<PodcastListenerWidget>
     );
     _player = AudioPlayer(
       audioLoadConfiguration: AudioLoadConfiguration(
-        // iOS/macOS settings
         darwinLoadControl: DarwinLoadControl(
           automaticallyWaitsToMinimizeStalling:
               false, // Start playback immediately
@@ -220,11 +218,7 @@ class _PodcastListenerWidgetState extends State<PodcastListenerWidget>
               100.0,
             )
             : 0.0;
-    // logInteractionInServer(
-    //   widget.book.id,
-    //   widget.chapterIndex,
-    //   percentageListened.toInt(),
-    // );
+
     print('percentageListened: $percentageListened');
     if (percentageListened > 94) {
       _currentPosition = Duration.zero;
