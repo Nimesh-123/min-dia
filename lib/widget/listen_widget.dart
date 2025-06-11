@@ -5,7 +5,7 @@ import '../controller/continue_listening_controller.dart';
 
 class ContinueListeningWidget extends StatelessWidget {
   ContinueListeningWidget({super.key});
-  final controller = Get.put(ContinueListeningController());
+  ContinueListeningController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class ContinueListeningWidget extends StatelessWidget {
               width: 50,
             ),
             const SizedBox(width: 12),
-            const Expanded(
-              child: Text(
-                'The Subtle Art of Not Giving a F*ck',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              ),
+            Expanded(
+              child: Obx(() => Text(
+                controller.currentUrlTitle.value,
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),)
             ),
             Obx(() => IconButton(
               icon: Icon(controller.isPlaying.value ? Icons.pause : Icons.play_arrow),
